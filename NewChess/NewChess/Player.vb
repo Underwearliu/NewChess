@@ -70,6 +70,7 @@
 
     End Sub
 
+
     Private Sub LocateChess(ByRef Value As Byte, ByRef Icon As Image, ByRef BoardX As Byte, ByRef BoardY As Byte, ByRef ChessSide As Boolean)
         Board.Location(BoardX, BoardY).Occupied = True
         Board.Location(BoardX, BoardY).Side = ChessSide

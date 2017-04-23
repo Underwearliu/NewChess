@@ -1,10 +1,17 @@
 ﻿Public Class SelectChess
+
+    Private Shared SelectX As Byte
+    Private Shared SelectY As Byte
+
     Private Shared PossCounter As Byte
     Private Shared XPoss(20) As Byte
     Private Shared YPoss(20) As Byte
 
-
     Public Sub New(ByVal ChessSide As Boolean, ByVal Value As Byte, ByRef ChessX As Byte, ByRef ChessY As Byte)
+
+        SelectX = ChessX
+        SelectY = ChessY
+
         PossCounter = 0
         CalculatePossibles(ChessSide, Value, ChessX, ChessY)
         Form1.ChessUp = True
@@ -16,7 +23,6 @@
         End If
 
         For a = 0 To PossCounter
-            MsgBox(a & XPoss(a) & YPoss(a))
             MakePossVisible(XPoss(a), YPoss(a))
         Next
 
@@ -26,8 +32,6 @@
 
         XPoss(PossCounter) = ChessX
         YPoss(PossCounter) = ChessY
-
-
 
         'Bunch of Checks
 
@@ -115,6 +119,16 @@
         Board.PossBox(PossX, PossY).Visible = True
     End Sub
 
+
+    Public Shared Function getSelectX()
+        Return SelectX
+    End Function
+
+    Public Shared Function getSelectY()
+        Return SelectY
+    End Function
+
+
     Public Shared Function getPossCounter()
         Return PossCounter
     End Function
@@ -126,4 +140,6 @@
     Public Shared Function getYPoss(ByRef Poss As Byte)
         Return YPoss(Poss)
     End Function
+
+
 End Class

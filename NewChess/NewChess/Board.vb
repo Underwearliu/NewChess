@@ -92,10 +92,9 @@
         Y = (PointY - StartY) / IntervalY
 
         If Form1.ChessUp = True Then
-            ChessMove = New MoveChess()
+            ChessMove = New MoveChess(X, Y)
         End If
-        Form1.ChessUp = False
-        Form1.CurrentPlayer = Not Form1.CurrentPlayer
+
     End Sub
 
 

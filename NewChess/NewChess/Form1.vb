@@ -3,6 +3,9 @@
     Private NewGame As Game
     Public CurrentPlayer As Boolean = False 'Red Side always start first
     Public ChessUp As Boolean = False
+    Public CurrentX As Byte
+    Public CurrentY As Byte
+
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
