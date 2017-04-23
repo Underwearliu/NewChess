@@ -24,91 +24,11 @@
         End If
     End Sub
 
-    Private Sub CalculatePossibles(ByVal Value As Byte, ByVal ChessSide As Boolean, ByRef ChessX As Byte, ByRef ChessY As Byte)
+    Private Sub CalculatePossibles(ByVal ChessSide As Boolean, ByVal Value As Byte, ByRef ChessX As Byte, ByRef ChessY As Byte)
         'Bunch of Checks
         Select Case Value
-            Case 1 'Soldier
-                'Before River
-                If ChessSide = True And ChessY < 9 Then
-                    If IsOwnChessThere(ChessSide, ChessX, ChessY + 1) = False Then
-                        PossCounter += 1
-                        XPoss(PossCounter) = ChessX
-                        YPoss(PossCounter) = ChessY + 1
-                    End If
-                End If
-                If ChessSide = False And ChessY > 0 Then
-                    If IsOwnChessThere(ChessSide, ChessX, ChessY - 1) = False Then
-                        PossCounter += 1
-                        XPoss(PossCounter) = ChessX
-                        YPoss(PossCounter) = ChessY - 1
-                    End If
-                End If
-                If (ChessSide = True And ChessY >= 5) Or (ChessSide = False And ChessY <= 4) Then
-                    'Passed River               
-                    If ChessX <> 0 Then
-                        'Move Left
-                        If IsOwnChessThere(ChessSide, ChessX - 1, ChessY) = False Then
-                            PossCounter += 1
-                            XPoss(PossCounter) = ChessX - 1
-                            YPoss(PossCounter) = ChessY
-                        End If
-                    ElseIf ChessX <> 9 Then
-                        'Move Right
-                        If IsOwnChessThere(ChessSide, ChessX + 1, ChessY) = False Then
-                            PossCounter += 1
-                            XPoss(PossCounter) = ChessX + 1
-                            YPoss(PossCounter) = ChessY
-                        End If
-                    End If
-                End If
-
-            Case 2 'General
-                If ChessX >= 3 And ChessX <= 4 Then
-                    If IsOwnChessThere(ChessSide, ChessX + 1, ChessY) = False Then
-                        PossCounter += 1
-                        XPoss(PossCounter) = ChessX + 1
-                        YPoss(PossCounter) = ChessY
-                    End If
-                End If
-                If ChessX >= 4 And ChessX <= 5 Then
-                    If IsOwnChessThere(ChessSide, ChessX - 1, ChessY) = False Then
-                        PossCounter += 1
-                        XPoss(PossCounter) = ChessX - 1
-                        YPoss(PossCounter) = ChessY
-                    End If
-                End If
-                If ChessSide = True Then
-                    If ChessY = 0 Or ChessY = 1 Then
-                        If IsOwnChessThere(ChessSide, ChessX, ChessY + 1) = False Then
-                            PossCounter += 1
-                            XPoss(PossCounter) = ChessX
-                            YPoss(PossCounter) = ChessY + 1
-                        End If
-                    End If
-                    If ChessY = 1 Or ChessY = 2 Then
-                        If IsOwnChessThere(ChessSide, ChessX, ChessY - 1) = False Then
-                            PossCounter += 1
-                            XPoss(PossCounter) = ChessX
-                            YPoss(PossCounter) = ChessY - 1
-                        End If
-                    End If
-                Else
-                    If ChessY = 7 Or ChessY = 8 Then
-                        If IsOwnChessThere(ChessSide, ChessX, ChessY + 1) = False Then
-                            PossCounter += 1
-                            XPoss(PossCounter) = ChessX
-                            YPoss(PossCounter) = ChessY + 1
-                        End If
-                    End If
-                    If ChessY = 8 Or ChessY = 9 Then
-                        If IsOwnChessThere(ChessSide, ChessX, ChessY - 1) = False Then
-                            PossCounter += 1
-                            XPoss(PossCounter) = ChessX
-                            YPoss(PossCounter) = ChessY - 1
-                        End If
-                    End If
-                End If
-
+            Case 1 'General
+            Case 2 'Soldier
             Case 3 'Chariot
             Case 4 'Horse
             Case 5 'Elephant

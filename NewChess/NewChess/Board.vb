@@ -8,18 +8,16 @@
     Public Const IntervalY As SByte = 77 'For Chesspieces gap
 
     Private ChessMove As MoveChess
+    Private ChessSelect As SelectChess
 
-    Public Structure Details
+    Public Structure LocationDetails
         Dim Occupied As Boolean
         Dim Side As Boolean
-        Dim ID As Byte
-        Dim X As Byte
-        Dim Y As Byte
+        Dim Value As Byte
         Dim PicBox As PictureBox
     End Structure
 
-    Public Shared Location(BoardX, BoardY) As Details
-    'Public Shared PicBox(BoardX, BoardY) As PictureBox
+    Public Shared Location(BoardX, BoardY) As LocationDetails
     Public Shared PossBox(BoardX, BoardY) As PictureBox
 
     Public Sub New()
@@ -43,13 +41,24 @@
     End Sub
 
     Private Sub picBox_Click(sender As Object, e As EventArgs)
-        'If Side = VisualBoard.CurrentPlayer And VisualBoard.ChessUp = False Then
-        '    'VisualBoard.CurrentPlayer = Not VisualBoard.CurrentPlayer
-        '    CurrentID = ChessID
-        '    CurrentSide = Side
-        '    VisualBoard.ChessUp = True
-        '    ChessUp = New PickUpChess(ChessValue, Side, ChessX, ChessY)
-        'End If
+
+        Dim PointX As Integer
+        Dim PointY As Integer
+        Dim BoardX As Byte = 0
+        Dim BoardY As Byte = 0
+
+        PointX = sender.location.x
+        PointY = sender.location.y
+
+        BoardX = (PointX - StartX) / IntervalX
+        BoardY = (PointY - StartY) / IntervalY
+
+        If Location(BoardX, BoardY).Side = Form1.CurrentPlayer And Form1.ChessUp = False Then
+            Form1.CurrentPlayer = Not Form1.CurrentPlayer
+            ChessSelect = New SelectChess(Location(BoardX, BoardY).Side, Location(BoardX, BoardY).Value, BoardX, BoardY)
+        End If
+
+
     End Sub
 
 

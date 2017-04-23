@@ -20,6 +20,12 @@
             PlayerTurn.Image = My.Resources.Red
         End If
 
+        For x = 1 To Board.BoardX
+            For y = 1 To Board.BoardY
+                Board.Location(x, y).PicBox.Visible = Board.Location(x, y).Occupied
+            Next
+        Next
+
     End Sub
 
 End Class
