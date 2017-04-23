@@ -4,31 +4,90 @@
     Private Shared YPoss(20) As Byte
 
 
-    Public Sub New(ByVal Value As Byte, ByVal ChessSide As Boolean, ByRef ChessX As Byte, ByRef ChessY As Byte)
+    Public Sub New(ByVal ChessSide As Boolean, ByVal Value As Byte, ByRef ChessX As Byte, ByRef ChessY As Byte)
         PossCounter = 0
-        CalculatePossibles(Value, ChessSide, ChessX, ChessY)
+        CalculatePossibles(ChessSide, Value, ChessX, ChessY)
         Form1.ChessUp = True
-        'Board.PicBox(ChessX, ChessY).Visible = False
+
         If PossCounter = 1 Then
             Form1.StatusLabel.Text = ("There is " & PossCounter & " possible move.")
         Else
             Form1.StatusLabel.Text = ("There are " & PossCounter & " possible moves.")
         End If
 
-        For a = 1 To PossCounter
+        For a = 0 To PossCounter
+            MsgBox(a & XPoss(a) & YPoss(a))
             MakePossVisible(XPoss(a), YPoss(a))
         Next
 
-        If PossCounter = 0 Then
-            Form1.ChessUp = False
-        End If
     End Sub
 
-    Private Sub CalculatePossibles(ByVal ChessSide As Boolean, ByVal Value As Byte, ByRef ChessX As Byte, ByRef ChessY As Byte)
+    Private Sub CalculatePossibles(ByVal ChessSide As Boolean, ByVal Value As Byte, ByVal ChessX As Byte, ByVal ChessY As Byte)
+
+        XPoss(PossCounter) = ChessX
+        YPoss(PossCounter) = ChessY
+
+
+
         'Bunch of Checks
+
         Select Case Value
             Case 1 'General
+
             Case 2 'Soldier
+                If ChessSide = True Then
+                    If ChessY < 9 Then
+                        If IsOwnChessThere(ChessSide, ChessX, ChessY + 1) = False Then
+                            PossCounter += 1
+                            XPoss(PossCounter) = ChessX
+                            YPoss(PossCounter) = ChessY + 1
+                        End If
+                    End If
+
+                    If ChessY >= 5 Then
+                        If ChessX <> 0 Then
+                            If IsOwnChessThere(ChessSide, ChessX - 1, ChessY) = False Then
+                                PossCounter += 1
+                                XPoss(PossCounter) = ChessX - 1
+                                YPoss(PossCounter) = ChessY
+                            End If
+                            If ChessX <> 8 Then
+                                If IsOwnChessThere(ChessSide, ChessX + 1, ChessY) = False Then
+                                    PossCounter += 1
+                                    XPoss(PossCounter) = ChessX + 1
+                                    YPoss(PossCounter) = ChessY
+                                End If
+                            End If
+                        End If
+                    End If
+
+                Else
+                    If ChessY > 0 Then
+                        If IsOwnChessThere(ChessSide, ChessX, ChessY - 1) = False Then
+                            PossCounter += 1
+                            XPoss(PossCounter) = ChessX
+                            YPoss(PossCounter) = ChessY - 1
+                        End If
+                    End If
+
+                    If ChessY <= 4 Then
+                        If ChessX <> 0 Then
+                            If IsOwnChessThere(ChessSide, ChessX - 1, ChessY) = False Then
+                                PossCounter += 1
+                                XPoss(PossCounter) = ChessX - 1
+                                YPoss(PossCounter) = ChessY
+                            End If
+                            If ChessX <> 8 Then
+                                If IsOwnChessThere(ChessSide, ChessX + 1, ChessY) = False Then
+                                    PossCounter += 1
+                                    XPoss(PossCounter) = ChessX + 1
+                                    YPoss(PossCounter) = ChessY
+                                End If
+                            End If
+                        End If
+                    End If
+
+                End If
             Case 3 'Chariot
             Case 4 'Horse
             Case 5 'Elephant

@@ -1,6 +1,6 @@
 ﻿Public Class MoveChess
     Public Sub New()
-        For b = 1 To SelectChess.getPossCounter
+        For b = 0 To SelectChess.getPossCounter
             MakePossInvisible(SelectChess.getXPoss(b), SelectChess.getYPoss(b))
         Next
     End Sub

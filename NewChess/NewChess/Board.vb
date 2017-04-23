@@ -44,18 +44,17 @@
 
         Dim PointX As Integer
         Dim PointY As Integer
-        Dim BoardX As Byte = 0
-        Dim BoardY As Byte = 0
+        Dim X As Byte = 0
+        Dim Y As Byte = 0
 
         PointX = sender.location.x
         PointY = sender.location.y
 
-        BoardX = (PointX - StartX) / IntervalX
-        BoardY = (PointY - StartY) / IntervalY
+        X = (PointX - StartX) / IntervalX
+        Y = (PointY - StartY) / IntervalY
 
-        If Location(BoardX, BoardY).Side = Form1.CurrentPlayer And Form1.ChessUp = False Then
-            Form1.CurrentPlayer = Not Form1.CurrentPlayer
-            ChessSelect = New SelectChess(Location(BoardX, BoardY).Side, Location(BoardX, BoardY).Value, BoardX, BoardY)
+        If Location(X, Y).Side = Form1.CurrentPlayer And Form1.ChessUp = False Then
+            ChessSelect = New SelectChess(Location(X, Y).Side, Location(X, Y).Value, X, Y)
         End If
 
 
@@ -80,6 +79,18 @@
     End Sub
 
     Private Sub possBox_Click(sender As Object, e As EventArgs)
+
+        Dim PointX As Integer
+        Dim PointY As Integer
+        Dim X As Byte
+        Dim Y As Byte
+
+        PointX = sender.location.x
+        PointY = sender.location.y
+
+        X = (PointX - StartX) / IntervalX
+        Y = (PointY - StartY) / IntervalY
+
         If Form1.ChessUp = True Then
             ChessMove = New MoveChess()
         End If
