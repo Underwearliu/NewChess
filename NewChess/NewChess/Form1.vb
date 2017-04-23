@@ -1,7 +1,7 @@
 ﻿Public Class Form1
 
     Private NewGame As Game
-    Public CurrentPlayer As Boolean = False 'Red Side always start first
+    Public CurrentPlayer As Boolean = True 'Red Side always start first
     Public ChessUp As Boolean = False
     Public CurrentX As Byte
     Public CurrentY As Byte
@@ -23,12 +23,9 @@
             PlayerTurn.Image = My.Resources.Red
         End If
 
-        For x = 1 To Board.BoardX
-            For y = 1 To Board.BoardY
-                Board.Location(x, y).PicBox.Visible = Board.Location(x, y).Occupied
-            Next
-        Next
-
+        If ChessUp = False Then
+            StatusLabel.Text = ""
+        End If
     End Sub
 
 End Class

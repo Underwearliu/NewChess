@@ -22,6 +22,7 @@
         If OriginalX <> PossBoxX Or OriginalY <> PossBoxY Then
             'Form1.CurrentPlayer = Not Form1.CurrentPlayer
             Board.Location(OriginalX, OriginalY).Occupied = False
+            Board.Location(OriginalX, OriginalY).PicBox.Visible = False
         End If
 
     End Sub
