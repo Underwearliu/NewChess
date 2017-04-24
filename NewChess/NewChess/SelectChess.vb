@@ -30,6 +30,7 @@
 
     Private Sub CalculatePossibles(ByVal ChessSide As Boolean, ByVal Value As Byte, ByVal ChessX As Byte, ByVal ChessY As Byte)
 
+        'The Cancel SelectChess Move
         XPoss(PossCounter) = ChessX
         YPoss(PossCounter) = ChessY
 
@@ -219,8 +220,87 @@
 
             Case 4 'Horse
 
-            Case 5 'Elephant
+                'Up then
+                If ChessY >= 2 Then
+                    If Board.Location(ChessX, ChessY - 1).Occupied = False Then
+                        If ChessX <> 0 Then
+                            If IsOwnChessThere(ChessSide, ChessX - 1, ChessY - 2) = False Then 'Left
+                                PossCounter += 1
+                                XPoss(PossCounter) = ChessX - 1
+                                YPoss(PossCounter) = ChessY - 2
+                            End If
+                        End If
+                        If ChessX <> 8 Then
+                            If IsOwnChessThere(ChessSide, ChessX + 1, ChessY - 2) = False Then 'Right
+                                PossCounter += 1
+                                XPoss(PossCounter) = ChessX + 1
+                                YPoss(PossCounter) = ChessY - 2
+                            End If
+                        End If
+                    End If
+                End If
 
+                'Down then
+                If ChessY <= 7 Then
+                    If Board.Location(ChessX, ChessY + 1).Occupied = False Then
+                        If ChessX <> 0 Then
+                            If IsOwnChessThere(ChessSide, ChessX - 1, ChessY + 2) = False Then 'Left
+                                PossCounter += 1
+                                XPoss(PossCounter) = ChessX - 1
+                                YPoss(PossCounter) = ChessY + 2
+                            End If
+                        End If
+                        If ChessX <> 8 Then
+                            If IsOwnChessThere(ChessSide, ChessX + 1, ChessY + 2) = False Then 'Right
+                                PossCounter += 1
+                                XPoss(PossCounter) = ChessX + 1
+                                YPoss(PossCounter) = ChessY + 2
+                            End If
+                        End If
+                    End If
+                End If
+
+                'Left then
+                If ChessX >= 2 Then
+                    If Board.Location(ChessX - 1, ChessY).Occupied = False Then
+                        If ChessY <> 0 Then
+                            If IsOwnChessThere(ChessSide, ChessX - 2, ChessY - 1) = False Then 'Up
+                                PossCounter += 1
+                                XPoss(PossCounter) = ChessX - 2
+                                YPoss(PossCounter) = ChessY - 1
+                            End If
+                        End If
+                        If ChessY <> 9 Then
+                            If IsOwnChessThere(ChessSide, ChessX - 2, ChessY + 1) = False Then 'Down
+                                PossCounter += 1
+                                XPoss(PossCounter) = ChessX - 2
+                                YPoss(PossCounter) = ChessY + 1
+                            End If
+                        End If
+                    End If
+                End If
+
+                'Right then
+                If ChessX <= 6 Then
+                    If Board.Location(ChessX + 1, ChessY).Occupied = False Then
+                        If ChessY <> 0 Then
+                            If IsOwnChessThere(ChessSide, ChessX + 2, ChessY - 1) = False Then 'Up
+                                PossCounter += 1
+                                XPoss(PossCounter) = ChessX + 2
+                                YPoss(PossCounter) = ChessY - 1
+                            End If
+                        End If
+                        If ChessY <> 9 Then
+                            If IsOwnChessThere(ChessSide, ChessX + 2, ChessY + 1) = False Then 'Down
+                                PossCounter += 1
+                                XPoss(PossCounter) = ChessX + 2
+                                YPoss(PossCounter) = ChessY + 1
+                            End If
+                        End If
+                    End If
+                End If
+
+            Case 5 'Elephant
 
                 If ChessY = 0 Or ChessY = 2 Or ChessY = 5 Or ChessY = 7 Then
                     If ChessX <> 0 Then
