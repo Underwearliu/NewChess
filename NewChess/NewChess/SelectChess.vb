@@ -37,22 +37,26 @@
 
         Select Case Value
             Case 1 'General
+
+                'Horizontal Movements
+                If ChessX = 3 Or ChessX = 4 Then
+                    If IsOwnChessThere(ChessSide, ChessX + 1, ChessY) = False Then
+                        PossCounter += 1
+                        XPoss(PossCounter) = ChessX + 1
+                        YPoss(PossCounter) = ChessY
+                    End If
+                End If
+                If ChessX = 4 Or ChessX = 5 Then
+                    If IsOwnChessThere(ChessSide, ChessX - 1, ChessY) = False Then
+                        PossCounter += 1
+                        XPoss(PossCounter) = ChessX - 1
+                        YPoss(PossCounter) = ChessY
+                    End If
+                End If
+
+                'Vertical Movements
                 If ChessSide = True Then
 
-                    If ChessX = 3 Or ChessX = 4 Then
-                        If IsOwnChessThere(ChessSide, ChessX + 1, ChessY) = False Then
-                            PossCounter += 1
-                            XPoss(PossCounter) = ChessX + 1
-                            YPoss(PossCounter) = ChessY
-                        End If
-                    End If
-                    If ChessX = 4 Or ChessX = 5 Then
-                        If IsOwnChessThere(ChessSide, ChessX - 1, ChessY) = False Then
-                            PossCounter += 1
-                            XPoss(PossCounter) = ChessX - 1
-                            YPoss(PossCounter) = ChessY
-                        End If
-                    End If
                     If ChessY = 0 Or ChessY = 1 Then
                         If IsOwnChessThere(ChessSide, ChessX, ChessY + 1) = False Then
                             PossCounter += 1
@@ -70,20 +74,6 @@
 
                 Else
 
-                    If ChessX = 3 Or ChessX = 4 Then
-                        If IsOwnChessThere(ChessSide, ChessX + 1, ChessY) = False Then
-                            PossCounter += 1
-                            XPoss(PossCounter) = ChessX + 1
-                            YPoss(PossCounter) = ChessY
-                        End If
-                    End If
-                    If ChessX = 4 Or ChessX = 5 Then
-                        If IsOwnChessThere(ChessSide, ChessX - 1, ChessY) = False Then
-                            PossCounter += 1
-                            XPoss(PossCounter) = ChessX - 1
-                            YPoss(PossCounter) = ChessY
-                        End If
-                    End If
                     If ChessY = 7 Or ChessY = 8 Then
                         If IsOwnChessThere(ChessSide, ChessX, ChessY + 1) = False Then
                             PossCounter += 1
@@ -100,8 +90,10 @@
                     End If
 
                 End If
+
             Case 2 'Soldier
                 If ChessSide = True Then
+
                     If ChessY < 9 Then
                         If IsOwnChessThere(ChessSide, ChessX, ChessY + 1) = False Then
                             PossCounter += 1
@@ -154,6 +146,7 @@
                     End If
 
                 End If
+
             Case 3 'Chariot
                 Dim Left As Byte = 0
                 Dim Right As Byte = 0
@@ -227,70 +220,99 @@
             Case 4 'Horse
 
             Case 5 'Elephant
-                If ChessX = 2 And ChessY = 0 Then
-                    If IsOwnChessThere(ChessSide, 0, 2) = False Then
-                        If Board.Location(1, 1).Occupied = False Then
-                            PossCounter += 1
-                            XPoss(PossCounter) = 0
-                            YPoss(PossCounter) = 2
+
+
+                If ChessY = 0 Or ChessY = 2 Or ChessY = 5 Or ChessY = 7 Then
+                    If ChessX <> 0 Then
+                        If IsOwnChessThere(ChessSide, ChessX - 2, ChessY + 2) = False Then
+                            If Board.Location(ChessX - 1, ChessY + 1).Occupied = False Then
+                                PossCounter += 1
+                                XPoss(PossCounter) = ChessX - 2
+                                YPoss(PossCounter) = ChessY + 2
+                            End If
+                        End If
+                    End If
+                    If ChessX <> 8 Then
+                        If IsOwnChessThere(ChessSide, ChessX + 2, ChessY + 2) = False Then
+                            If Board.Location(ChessX + 1, ChessY + 1).Occupied = False Then
+                                PossCounter += 1
+                                XPoss(PossCounter) = ChessX + 2
+                                YPoss(PossCounter) = ChessY + 2
+                            End If
                         End If
                     End If
                 End If
+
+                If ChessY = 2 Or ChessY = 4 Or ChessY = 7 Or ChessY = 9 Then
+                    If ChessX <> 0 Then
+                        If IsOwnChessThere(ChessSide, ChessX - 2, ChessY - 2) = False Then
+                            If Board.Location(ChessX - 1, ChessY - 1).Occupied = False Then
+                                PossCounter += 1
+                                XPoss(PossCounter) = ChessX - 2
+                                YPoss(PossCounter) = ChessY - 2
+                            End If
+                        End If
+                    End If
+                    If ChessX <> 8 Then
+                        If IsOwnChessThere(ChessSide, ChessX + 2, ChessY - 2) = False Then
+                            If Board.Location(ChessX + 1, ChessY - 1).Occupied = False Then
+                                PossCounter += 1
+                                XPoss(PossCounter) = ChessX + 2
+                                YPoss(PossCounter) = ChessY - 2
+                            End If
+                        End If
+                    End If
+                End If
+
             Case 6 'Advisor
-                If ChessSide = True Then
-                    If ChessY = 0 Or ChessY = 2 Then
-                        If IsOwnChessThere(ChessSide, 4, 1) = False Then
-                            PossCounter += 1
-                            XPoss(PossCounter) = 4
-                            YPoss(PossCounter) = 1
-                        End If
-                    End If
-                    If ChessY = 1 Then
+
+                If ChessX = 3 Then
+                    If ChessY = 0 Or ChessY = 7 Then
                         If IsOwnChessThere(ChessSide, ChessX + 1, ChessY + 1) = False Then
                             PossCounter += 1
                             XPoss(PossCounter) = ChessX + 1
                             YPoss(PossCounter) = ChessY + 1
                         End If
-                        If IsOwnChessThere(ChessSide, ChessX - 1, ChessY + 1) = False Then
-                            PossCounter += 1
-                            XPoss(PossCounter) = ChessX - 1
-                            YPoss(PossCounter) = ChessY + 1
-                        End If
+                    Else
                         If IsOwnChessThere(ChessSide, ChessX + 1, ChessY - 1) = False Then
                             PossCounter += 1
                             XPoss(PossCounter) = ChessX + 1
                             YPoss(PossCounter) = ChessY - 1
                         End If
-                        If IsOwnChessThere(ChessSide, ChessX - 1, ChessY - 1) = False Then
-                            PossCounter += 1
-                            XPoss(PossCounter) = ChessX - 1
-                            YPoss(PossCounter) = ChessY - 1
-                        End If
                     End If
-                Else
-                    If ChessY = 7 Or ChessY = 9 Then
-                        If IsOwnChessThere(ChessSide, 4, 8) = False Then
-                            PossCounter += 1
-                            XPoss(PossCounter) = 4
-                            YPoss(PossCounter) = 8
-                        End If
+                End If
+
+                If ChessX = 4 Then
+                    If IsOwnChessThere(ChessSide, ChessX + 1, ChessY + 1) = False Then
+                        PossCounter += 1
+                        XPoss(PossCounter) = ChessX + 1
+                        YPoss(PossCounter) = ChessY + 1
                     End If
-                    If ChessY = 8 Then
-                        If IsOwnChessThere(ChessSide, ChessX + 1, ChessY + 1) = False Then
-                            PossCounter += 1
-                            XPoss(PossCounter) = ChessX + 1
-                            YPoss(PossCounter) = ChessY + 1
-                        End If
+                    If IsOwnChessThere(ChessSide, ChessX - 1, ChessY + 1) = False Then
+                        PossCounter += 1
+                        XPoss(PossCounter) = ChessX - 1
+                        YPoss(PossCounter) = ChessY + 1
+                    End If
+                    If IsOwnChessThere(ChessSide, ChessX + 1, ChessY - 1) = False Then
+                        PossCounter += 1
+                        XPoss(PossCounter) = ChessX + 1
+                        YPoss(PossCounter) = ChessY - 1
+                    End If
+                    If IsOwnChessThere(ChessSide, ChessX - 1, ChessY - 1) = False Then
+                        PossCounter += 1
+                        XPoss(PossCounter) = ChessX - 1
+                        YPoss(PossCounter) = ChessY - 1
+                    End If
+                End If
+
+                If ChessX = 5 Then
+                    If ChessY = 0 Or ChessY = 7 Then
                         If IsOwnChessThere(ChessSide, ChessX - 1, ChessY + 1) = False Then
                             PossCounter += 1
                             XPoss(PossCounter) = ChessX - 1
                             YPoss(PossCounter) = ChessY + 1
                         End If
-                        If IsOwnChessThere(ChessSide, ChessX + 1, ChessY - 1) = False Then
-                            PossCounter += 1
-                            XPoss(PossCounter) = ChessX + 1
-                            YPoss(PossCounter) = ChessY - 1
-                        End If
+                    Else
                         If IsOwnChessThere(ChessSide, ChessX - 1, ChessY - 1) = False Then
                             PossCounter += 1
                             XPoss(PossCounter) = ChessX - 1
@@ -298,6 +320,7 @@
                         End If
                     End If
                 End If
+
             Case 7 'Cannon
         End Select
 

@@ -1,7 +1,7 @@
 ﻿Public Class Form1
 
     Private NewGame As Game
-    Public CurrentPlayer As Boolean = True 'Red Side always start first
+    Public CurrentPlayer As Boolean = False 'Red Side always start first
     Public ChessUp As Boolean = False
     Public CurrentX As Byte
     Public CurrentY As Byte

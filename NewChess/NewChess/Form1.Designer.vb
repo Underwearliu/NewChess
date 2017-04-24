@@ -26,6 +26,7 @@ Partial Class Form1
         Me.StatusLabel = New System.Windows.Forms.Label()
         Me.PlayerTurn = New System.Windows.Forms.PictureBox()
         Me.ChessTimer = New System.Windows.Forms.Timer(Me.components)
+        Me.Label = New System.Windows.Forms.Label()
         CType(Me.PlayerTurn, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -46,6 +47,18 @@ Partial Class Form1
         Me.PlayerTurn.TabIndex = 1
         Me.PlayerTurn.TabStop = False
         '
+        'ChessTimer
+        '
+        '
+        'Label
+        '
+        Me.Label.AutoSize = True
+        Me.Label.Location = New System.Drawing.Point(660, 351)
+        Me.Label.Name = "Label"
+        Me.Label.Size = New System.Drawing.Size(73, 13)
+        Me.Label.TabIndex = 2
+        Me.Label.Text = "Current Player"
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -53,6 +66,7 @@ Partial Class Form1
         Me.BackgroundImage = Global.NewChess.My.Resources.Resources.Board
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(784, 761)
+        Me.Controls.Add(Me.Label)
         Me.Controls.Add(Me.PlayerTurn)
         Me.Controls.Add(Me.StatusLabel)
         Me.DoubleBuffered = True
@@ -67,4 +81,5 @@ Partial Class Form1
     Friend WithEvents StatusLabel As Label
     Friend WithEvents PlayerTurn As PictureBox
     Friend WithEvents ChessTimer As Timer
+    Friend WithEvents Label As Label
 End Class
