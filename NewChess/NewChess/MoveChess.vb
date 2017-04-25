@@ -22,7 +22,8 @@
 
         'Compare Original Location and PossBox Location to see whether player moved a chesspiece or not
         If OriginalX <> PossBoxX Or OriginalY <> PossBoxY Then
-            Form1.CurrentPlayer = Not Form1.CurrentPlayer
+            'Form1.CurrentPlayer = Not Form1.CurrentPlayer
+            Form1.CurrentPlayer = True
             Board.Location(OriginalX, OriginalY).Occupied = False
             Board.Location(OriginalX, OriginalY).PicBox.Visible = False
         End If
