@@ -1,5 +1,6 @@
 ﻿Public Class Board
 
+
     Public Const BoardX As Byte = 8
     Public Const BoardY As Byte = 9
     Public Const StartX = 21 'Top left hand corner of the board
@@ -7,8 +8,10 @@
     Public Const IntervalX As SByte = 86 'For Chesspieces gap
     Public Const IntervalY As SByte = 77 'For Chesspieces gap
 
+
     Private ChessMove As MoveChess
     Private ChessSelect As SelectChess
+
 
     Public Structure LocationDetails
         Dim Occupied As Boolean
@@ -17,13 +20,16 @@
         Dim PicBox As PictureBox
     End Structure
 
+
     Public Shared Location(BoardX, BoardY) As LocationDetails
     Public Shared PossBox(BoardX, BoardY) As PictureBox
+
 
     Public Sub New()
         SetupBasePicBox()
         SetupPossible()
     End Sub
+
 
     Private Sub SetupBasePicBox()
         For x = 0 To BoardX
@@ -39,6 +45,7 @@
             Next
         Next
     End Sub
+
 
     Private Sub picBox_Click(sender As Object, e As EventArgs)
 
@@ -77,6 +84,7 @@
             Next
         Next
     End Sub
+
 
     Private Sub possBox_Click(sender As Object, e As EventArgs)
 

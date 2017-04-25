@@ -1,5 +1,6 @@
 ﻿Public Class Form1
 
+
     Private NewGame As Game
     Public CurrentPlayer As Boolean = False 'Red Side always start first
     Public ChessUp As Boolean = False
@@ -15,6 +16,7 @@
 
     End Sub
 
+
     Private Sub ChessTimer_Tick(sender As Object, e As EventArgs) Handles ChessTimer.Tick
 
         If CurrentPlayer = True Then 'Display Player Turn
@@ -27,5 +29,6 @@
             StatusLabel.Text = ""
         End If
     End Sub
+
 
 End Class

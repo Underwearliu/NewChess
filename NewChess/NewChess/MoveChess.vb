@@ -1,5 +1,6 @@
 ﻿Public Class MoveChess
 
+
     Public Sub New(ByVal PossBoxX As Byte, ByVal PossBoxY As Byte)
 
         Dim OriginalX As Byte = SelectChess.getSelectX
@@ -19,8 +20,9 @@
 
         Form1.ChessUp = False
 
+        'Compare Original Location and PossBox Location to see whether player moved a chesspiece or not
         If OriginalX <> PossBoxX Or OriginalY <> PossBoxY Then
-            'Form1.CurrentPlayer = Not Form1.CurrentPlayer
+            Form1.CurrentPlayer = Not Form1.CurrentPlayer
             Board.Location(OriginalX, OriginalY).Occupied = False
             Board.Location(OriginalX, OriginalY).PicBox.Visible = False
         End If

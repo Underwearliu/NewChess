@@ -1,10 +1,12 @@
 ﻿Public Class Player
 
+
     Public Sub New(ByRef Side As Boolean)
 
         SetUpChess(Side)
 
     End Sub
+
 
     Private Sub SetUpChess(ByVal Side As Boolean)
 
@@ -70,6 +72,7 @@
 
     End Sub
 
+
     Private Sub LocateChess(ByRef Value As Byte, ByRef Icon As Image, ByRef BoardX As Byte, ByRef BoardY As Byte, ByRef ChessSide As Boolean)
         Board.Location(BoardX, BoardY).Occupied = True
         Board.Location(BoardX, BoardY).Side = ChessSide
@@ -77,6 +80,7 @@
         Board.Location(BoardX, BoardY).PicBox.Image = New Bitmap(Icon, New Size(50, 50))
         Board.Location(BoardX, BoardY).PicBox.Visible = True
     End Sub
+
 
     Private Function getImage(ByVal Side As Boolean, ByVal ChessValue As Byte)
 
@@ -119,5 +123,6 @@
         Return Nothing
 
     End Function
+
 
 End Class
