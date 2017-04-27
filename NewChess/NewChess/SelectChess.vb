@@ -16,7 +16,7 @@
 
         PossCounter = 0
         CalculatePossibles(ChessSide, Value, ChessX, ChessY)
-        Form1.ChessUp = True
+        Form1.ChessUpChange()
 
         If PossCounter = 1 Then
             Form1.StatusLabel.Text = ("There is " & PossCounter & " possible move.")

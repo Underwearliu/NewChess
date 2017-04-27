@@ -26,7 +26,7 @@
         End If
 
 
-        If ChessUp = False Then
+        If getChessUp() = False Then
             StatusLabel.Text = ""
         End If
 
@@ -44,6 +44,16 @@
 
     Public Sub PlayerChange()
         CurrentPlayer = Not CurrentPlayer
+    End Sub
+
+
+    Public Function getChessUp()
+        Return ChessUp
+    End Function
+
+
+    Public Sub ChessUpChange()
+        ChessUp = Not ChessUp
     End Sub
 
 
@@ -71,11 +81,25 @@
 
             If Answer = "Yes" Or Answer = "yes" Then
                 ChangeGameState()
+                ClearsBoard()
                 NewGame = New Game
+                CurrentPlayer = False
                 ChessTimer.Enabled = True
             End If
 
         End If
+
+    End Sub
+
+
+    Private Sub ClearsBoard()
+
+        For a = 0 To Board.BoardX
+            For b = 0 To Board.BoardY
+                Board.Location(a, b).Occupied = False
+                Board.Location(a, b).PicBox.Visible = False
+            Next
+        Next
 
     End Sub
 

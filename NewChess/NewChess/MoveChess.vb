@@ -22,7 +22,7 @@
         Next
 
 
-        Form1.ChessUp = False
+        Form1.ChessUpChange()
 
 
         If Win = True Then

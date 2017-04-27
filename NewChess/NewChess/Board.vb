@@ -60,7 +60,7 @@
         X = (PointX - StartX) / IntervalX
         Y = (PointY - StartY) / IntervalY
 
-        If Location(X, Y).Side = Form1.getCurrentPlayer And Form1.ChessUp = False Then
+        If Location(X, Y).Side = Form1.getCurrentPlayer And Form1.getChessUp = False Then
             ChessSelect = New SelectChess(Location(X, Y).Side, Location(X, Y).Value, X, Y)
         End If
 
@@ -99,7 +99,7 @@
         X = (PointX - StartX) / IntervalX
         Y = (PointY - StartY) / IntervalY
 
-        If Form1.ChessUp = True Then
+        If Form1.getChessUp = True Then
             ChessMove = New MoveChess(X, Y)
         End If
 
