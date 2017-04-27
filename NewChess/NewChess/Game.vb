@@ -5,8 +5,8 @@
 
 
     Public Sub New()
-        Dim Player1 As New Player(True)       'Setup for Player1
-        Dim Player2 As New Player(False)      'Setup for Player2
+        Dim PlayerBlack As New Player(True)       'Setup for PlayerBlack
+        Dim PlayerRed As New Player(False)      'Setup for PlayerRed
     End Sub
 
 

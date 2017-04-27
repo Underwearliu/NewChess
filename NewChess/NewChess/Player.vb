@@ -1,5 +1,5 @@
 ﻿Public Class Player
-
+    'For Distributing Chess pieces to location on the board
 
     Public Sub New(ByRef Side As Boolean)
 

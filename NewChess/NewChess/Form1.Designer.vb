@@ -27,6 +27,10 @@ Partial Class Form1
         Me.PlayerTurn = New System.Windows.Forms.PictureBox()
         Me.ChessTimer = New System.Windows.Forms.Timer(Me.components)
         Me.Label = New System.Windows.Forms.Label()
+        Me.Player1Name = New System.Windows.Forms.Label()
+        Me.Player1Score = New System.Windows.Forms.Label()
+        Me.Player2Name = New System.Windows.Forms.Label()
+        Me.Player2Score = New System.Windows.Forms.Label()
         CType(Me.PlayerTurn, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -34,16 +38,17 @@ Partial Class Form1
         '
         Me.StatusLabel.AutoSize = True
         Me.StatusLabel.Font = New System.Drawing.Font("Arial Narrow", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.StatusLabel.Location = New System.Drawing.Point(328, 369)
+        Me.StatusLabel.Location = New System.Drawing.Point(338, 372)
         Me.StatusLabel.Name = "StatusLabel"
-        Me.StatusLabel.Size = New System.Drawing.Size(0, 16)
+        Me.StatusLabel.Size = New System.Drawing.Size(62, 16)
         Me.StatusLabel.TabIndex = 0
+        Me.StatusLabel.Text = "StatusLabel"
         '
         'PlayerTurn
         '
-        Me.PlayerTurn.Location = New System.Drawing.Point(678, 369)
+        Me.PlayerTurn.Location = New System.Drawing.Point(764, -1)
         Me.PlayerTurn.Name = "PlayerTurn"
-        Me.PlayerTurn.Size = New System.Drawing.Size(33, 32)
+        Me.PlayerTurn.Size = New System.Drawing.Size(19, 13)
         Me.PlayerTurn.TabIndex = 1
         Me.PlayerTurn.TabStop = False
         '
@@ -53,11 +58,47 @@ Partial Class Form1
         'Label
         '
         Me.Label.AutoSize = True
-        Me.Label.Location = New System.Drawing.Point(660, 351)
+        Me.Label.Location = New System.Drawing.Point(694, -1)
         Me.Label.Name = "Label"
         Me.Label.Size = New System.Drawing.Size(73, 13)
         Me.Label.TabIndex = 2
         Me.Label.Text = "Current Player"
+        '
+        'Player1Name
+        '
+        Me.Player1Name.AutoSize = True
+        Me.Player1Name.Location = New System.Drawing.Point(57, 374)
+        Me.Player1Name.Name = "Player1Name"
+        Me.Player1Name.Size = New System.Drawing.Size(70, 13)
+        Me.Player1Name.TabIndex = 3
+        Me.Player1Name.Text = "Player1Name"
+        '
+        'Player1Score
+        '
+        Me.Player1Score.AutoSize = True
+        Me.Player1Score.Location = New System.Drawing.Point(26, 374)
+        Me.Player1Score.Name = "Player1Score"
+        Me.Player1Score.Size = New System.Drawing.Size(70, 13)
+        Me.Player1Score.TabIndex = 4
+        Me.Player1Score.Text = "Player1Score"
+        '
+        'Player2Name
+        '
+        Me.Player2Name.AutoSize = True
+        Me.Player2Name.Location = New System.Drawing.Point(678, 374)
+        Me.Player2Name.Name = "Player2Name"
+        Me.Player2Name.Size = New System.Drawing.Size(70, 13)
+        Me.Player2Name.TabIndex = 5
+        Me.Player2Name.Text = "Player2Name"
+        '
+        'Player2Score
+        '
+        Me.Player2Score.AutoSize = True
+        Me.Player2Score.Location = New System.Drawing.Point(742, 374)
+        Me.Player2Score.Name = "Player2Score"
+        Me.Player2Score.Size = New System.Drawing.Size(70, 13)
+        Me.Player2Score.TabIndex = 6
+        Me.Player2Score.Text = "Player2Score"
         '
         'Form1
         '
@@ -66,6 +107,10 @@ Partial Class Form1
         Me.BackgroundImage = Global.NewChess.My.Resources.Resources.Board
         Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.ClientSize = New System.Drawing.Size(784, 761)
+        Me.Controls.Add(Me.Player2Score)
+        Me.Controls.Add(Me.Player2Name)
+        Me.Controls.Add(Me.Player1Score)
+        Me.Controls.Add(Me.Player1Name)
         Me.Controls.Add(Me.Label)
         Me.Controls.Add(Me.PlayerTurn)
         Me.Controls.Add(Me.StatusLabel)
@@ -82,4 +127,8 @@ Partial Class Form1
     Friend WithEvents PlayerTurn As PictureBox
     Friend WithEvents ChessTimer As Timer
     Friend WithEvents Label As Label
+    Friend WithEvents Player1Name As Label
+    Friend WithEvents Player1Score As Label
+    Friend WithEvents Player2Name As Label
+    Friend WithEvents Player2Score As Label
 End Class
