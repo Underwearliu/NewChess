@@ -546,7 +546,6 @@
                         Do
                             Down2 += 1
                         Loop Until ChessY + Down2 = 9 Or Board.Location(ChessX, ChessY + Down2).Occupied = True
-                        MsgBox(Down2)
                         If Board.Location(ChessX, ChessY + Down2).Occupied = True Then
                             If IsOwnChessThere(ChessSide, ChessX, ChessY + Down2) = False Then
                                 PossCounter += 1

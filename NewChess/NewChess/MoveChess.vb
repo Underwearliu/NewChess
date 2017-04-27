@@ -3,29 +3,59 @@
 
     Public Sub New(ByVal PossBoxX As Byte, ByVal PossBoxY As Byte)
 
+
         Dim OriginalX As Byte = SelectChess.getSelectX
         Dim OriginalY As Byte = SelectChess.getSelectY
+        Dim Win As Boolean = False
+        Dim WinningColour As String
+
+        If Board.Location(PossBoxX, PossBoxY).Occupied = True Then
+            Win = CheckWin(PossBoxX, PossBoxY)
+        End If
 
 
-        Board.Location(PossBoxX, PossBoxY).Occupied = True
-        Board.Location(PossBoxX, PossBoxY).Side = Board.Location(OriginalX, OriginalY).Side
-        Board.Location(PossBoxX, PossBoxY).Value = Board.Location(OriginalX, OriginalY).Value
-        Board.Location(PossBoxX, PossBoxY).PicBox.Image = New Bitmap(Board.Location(OriginalX, OriginalY).PicBox.Image, New Size(50, 50))
-        Board.Location(PossBoxX, PossBoxY).PicBox.Visible = True
+        ChessReplacement(OriginalX, OriginalY, PossBoxX, PossBoxY)
 
 
         For b = 0 To SelectChess.getPossCounter
             MakePossInvisible(SelectChess.getXPoss(b), SelectChess.getYPoss(b))
         Next
 
+
         Form1.ChessUp = False
 
+
+        If Win = True Then
+
+            If Form1.getCurrentPlayer = True Then
+                WinningColour = "Red"
+            Else
+                WinningColour = "Black"
+            End If
+
+            MsgBox(WinningColour & " wins!") 'Displays a winning message
+
+            Form1.ChangeGameState()
+
+        End If
+
+
+    End Sub
+
+
+    Private Sub ChessReplacement(ByVal X1 As Byte, Y1 As Byte, X2 As Byte, Y2 As Byte)
+
+        Board.Location(X2, Y2).Occupied = True
+        Board.Location(X2, Y2).Side = Board.Location(X1, Y1).Side
+        Board.Location(X2, Y2).Value = Board.Location(X1, Y1).Value
+        Board.Location(X2, Y2).PicBox.Image = New Bitmap(Board.Location(X1, Y1).PicBox.Image, New Size(50, 50))
+        Board.Location(X2, Y2).PicBox.Visible = True
+
         'Compare Original Location and PossBox Location to see whether player moved a chesspiece or not
-        If OriginalX <> PossBoxX Or OriginalY <> PossBoxY Then
-            'Form1.CurrentPlayer = Not Form1.CurrentPlayer
-            Form1.CurrentPlayer = True
-            Board.Location(OriginalX, OriginalY).Occupied = False
-            Board.Location(OriginalX, OriginalY).PicBox.Visible = False
+        If X1 <> X2 Or Y1 <> Y2 Then
+            Form1.PlayerChange() 'Change players
+            Board.Location(X1, Y1).Occupied = False
+            Board.Location(X1, Y1).PicBox.Visible = False
         End If
 
     End Sub
@@ -34,6 +64,14 @@
     Private Sub MakePossInvisible(ByVal PossX As Byte, ByVal PossY As Byte)
         Board.PossBox(PossX, PossY).Visible = False
     End Sub
+
+
+    Private Function CheckWin(ByVal X As Byte, Y As Byte)
+        If Board.Location(X, Y).Value = 1 Then
+            Return True
+        End If
+        Return False
+    End Function
 
 
 End Class

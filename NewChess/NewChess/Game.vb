@@ -2,12 +2,11 @@
 
 
     Private Board As New Board 'Setup Board
-    Private Player1 As New Player(True)       'Setup for Player1
-    Private Player2 As New Player(False)      'Setup for Player2
 
 
     Public Sub New()
-
+        Dim Player1 As New Player(True)       'Setup for Player1
+        Dim Player2 As New Player(False)      'Setup for Player2
     End Sub
 
 
