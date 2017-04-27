@@ -69,7 +69,7 @@
             ChessTimer.Enabled = False
 
             Do
-                Answer = InputBox("Do you wish to start a new game? (Yes/No)")
+                Answer = InputBox("Do you wish to start a new game? (Yes/No)", "New Game", "No")
                 If Answer = "Yes" Or Answer = "yes" Then
                     'Great
                 ElseIf Answer = "No" Or Answer = "no" Then
