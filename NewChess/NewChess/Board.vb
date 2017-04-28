@@ -5,7 +5,7 @@
     Public Const BoardY As Byte = 9
     Public Const StartX = 21 'Top left hand corner of the board
     Public Const StartY = 8  'Top left hand corner of the board
-    Public Const IntervalX As SByte = 86 'For Chesspieces gap
+    Public Const IntervalX As SByte = 86 'For Chesspieces gap (Found by try and error
     Public Const IntervalY As SByte = 77 'For Chesspieces gap
 
 

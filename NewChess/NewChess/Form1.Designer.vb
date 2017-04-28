@@ -38,7 +38,7 @@ Partial Class Form1
         '
         Me.StatusLabel.AutoSize = True
         Me.StatusLabel.Font = New System.Drawing.Font("Arial Narrow", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.StatusLabel.Location = New System.Drawing.Point(338, 372)
+        Me.StatusLabel.Location = New System.Drawing.Point(326, 374)
         Me.StatusLabel.Name = "StatusLabel"
         Me.StatusLabel.Size = New System.Drawing.Size(62, 16)
         Me.StatusLabel.TabIndex = 0

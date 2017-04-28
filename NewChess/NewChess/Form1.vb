@@ -13,7 +13,7 @@
     Private Structure PlayerDetails
         Dim Name As String
         Dim Score As Byte
-        Dim CurrentColour As Boolean
+        Dim CurrentSide As Boolean
     End Structure
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -38,7 +38,6 @@
 
         ChessTimer.Enabled = True
 
-
         NewGame = New Game
 
     End Sub
@@ -56,7 +55,7 @@
         End If
 
         If getChessUp() = False Then
-            If CurrentPlayer = Player1.CurrentColour Then
+            If CurrentPlayer = Player1.CurrentSide Then
                 StatusLabel.Text = "It is " & Player1.Name & "'s turn!"
             Else
                 StatusLabel.Text = "It is " & Player2.Name & "'s turn!"
@@ -98,7 +97,7 @@
 
         If GameEnd = True Then
 
-            If CurrentPlayer <> Player1.CurrentColour Then
+            If CurrentPlayer <> Player1.CurrentSide Then
                 Player1.Score += 1
             Else
                 Player2.Score += 1
@@ -152,12 +151,18 @@
     Private Sub StartNewRound()
         Round += 1
         If Round Mod 2 = 1 Then
-            Player1.CurrentColour = False
-            Player2.CurrentColour = True
+            Player1.CurrentSide = False
+            Player2.CurrentSide = True
         Else
-            Player1.CurrentColour = True
-            Player2.CurrentColour = False
+            Player1.CurrentSide = True
+            Player2.CurrentSide = False
         End If
     End Sub
+
+
+    Public Function getRound()
+        Return Round
+    End Function
+
 
 End Class

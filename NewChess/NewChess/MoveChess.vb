@@ -33,7 +33,7 @@
                 WinningColour = "Black"
             End If
 
-            MsgBox(WinningColour & " wins!") 'Displays a winning message
+            MsgBox(WinningColour & " wins Game " & Form1.getRound & "!") 'Displays a winning message
 
             Form1.ChangeGameState()
 

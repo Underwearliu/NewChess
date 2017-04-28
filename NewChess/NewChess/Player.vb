@@ -83,6 +83,7 @@
 
 
     Private Function getImage(ByVal Side As Boolean, ByVal ChessValue As Byte)
+        'get images for chesspieces
 
         If Side = True Then
             Select Case ChessValue
