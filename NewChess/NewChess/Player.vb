@@ -74,6 +74,7 @@
 
 
     Private Sub LocateChess(ByRef Value As Byte, ByRef Icon As Image, ByRef BoardX As Byte, ByRef BoardY As Byte, ByRef ChessSide As Boolean)
+        'Assigning values on board
         Board.Location(BoardX, BoardY).Occupied = True
         Board.Location(BoardX, BoardY).Side = ChessSide
         Board.Location(BoardX, BoardY).Value = Value
@@ -83,7 +84,7 @@
 
 
     Private Function getImage(ByVal Side As Boolean, ByVal ChessValue As Byte)
-        'get images for chesspieces
+        'get images for chesspieces from My.Resources
 
         If Side = True Then
             Select Case ChessValue

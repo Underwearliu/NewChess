@@ -45,6 +45,7 @@
 
     Private Sub ChessReplacement(ByVal X1 As Byte, Y1 As Byte, X2 As Byte, Y2 As Byte)
 
+        'Replaces chess pieces 
         Board.Location(X2, Y2).Occupied = True
         Board.Location(X2, Y2).Side = Board.Location(X1, Y1).Side
         Board.Location(X2, Y2).Value = Board.Location(X1, Y1).Value
@@ -67,6 +68,7 @@
 
 
     Private Function CheckWin(ByVal X As Byte, Y As Byte)
+        'Check if the chess piece being replaced is a General
         If Board.Location(X, Y).Value = 1 Then
             Return True
         End If

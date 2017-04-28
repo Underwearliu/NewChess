@@ -1,8 +1,8 @@
 ﻿Public Class Board
 
 
-    Public Const BoardX As Byte = 8
-    Public Const BoardY As Byte = 9
+    Public Const BoardX As Byte = 8 '8 across
+    Public Const BoardY As Byte = 9 '9 down
     Public Const StartX = 21 'Top left hand corner of the board
     Public Const StartY = 8  'Top left hand corner of the board
     Public Const IntervalX As SByte = 86 'For Chesspieces gap (Found by try and error
@@ -31,7 +31,7 @@
     End Sub
 
 
-    Private Sub SetupBasePicBox()
+    Private Sub SetupBasePicBox() 'Set up base picture boxes on the board
         For x = 0 To BoardX
             For y = 0 To BoardY
                 Location(x, y).PicBox = New PictureBox
@@ -40,7 +40,7 @@
                 Location(x, y).PicBox.Size = Location(x, y).PicBox.Image.Size()
                 Location(x, y).PicBox.Location = New Point(StartX + (x * IntervalX), StartY + (y * IntervalY))
                 Location(x, y).PicBox.BringToFront()
-                Location(x, y).PicBox.Visible = False
+                Location(x, y).PicBox.Visible = False 'when no chesspieces are there
                 AddHandler Location(x, y).PicBox.Click, AddressOf picBox_Click
             Next
         Next
@@ -49,6 +49,7 @@
 
     Private Sub picBox_Click(sender As Object, e As EventArgs)
 
+        'When a picbox is clicked, a chess will be selected
         Dim PointX As Integer
         Dim PointY As Integer
         Dim X As Byte = 0
@@ -68,7 +69,7 @@
     End Sub
 
 
-    Private Sub SetupPossible()
+    Private Sub SetupPossible() 'Set up possible boxes (bulls eye) which displays after a chesspiece is clicked
         Const PossX As Integer = IntervalX - 50
         Const PossY As Integer = IntervalY - 40
         For x = 0 To BoardX
@@ -79,7 +80,7 @@
                 PossBox(x, y).Size = PossBox(x, y).Image.Size()
                 PossBox(x, y).Location = New Point(StartX + (x * IntervalX + 8), StartY + (y * IntervalY + 8))
                 PossBox(x, y).BringToFront()
-                PossBox(x, y).Visible = False
+                PossBox(x, y).Visible = False 'Does not show when nothing is clicked
                 AddHandler PossBox(x, y).Click, AddressOf possBox_Click
             Next
         Next
@@ -88,6 +89,7 @@
 
     Private Sub possBox_Click(sender As Object, e As EventArgs)
 
+        'When a possbox is clicked introduce a New Move
         Dim PointX As Integer
         Dim PointY As Integer
         Dim X As Byte
@@ -99,9 +101,9 @@
         X = (PointX - StartX) / IntervalX
         Y = (PointY - StartY) / IntervalY
 
-        If Form1.getChessUp = True Then
-            ChessMove = New MoveChess(X, Y)
-        End If
+        'If Form1.getChessUp = True Then
+        ChessMove = New MoveChess(X, Y)
+        'End If
 
     End Sub
 
