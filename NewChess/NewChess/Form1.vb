@@ -91,7 +91,7 @@
         Do
             Try
 
-                Input = InputBox("How many rounds do you want to play? (1 - 10) (Leave blank or (0) if undecided)", "Number of Rounds")
+                Input = InputBox("How many rounds do you want to play? (1 - 10 recommended) (Leave blank or (0) if undecided)", "Number of Rounds")
 
                 If Input = "" Then
                     Input = "255"
