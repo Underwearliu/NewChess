@@ -69,7 +69,7 @@
 
     Private Function CheckWin(ByVal X As Byte, Y As Byte)
         'Check if the chess piece being replaced is a General
-        If Board.Location(X, Y).Value = 1 Then
+        If Form1.getCurrentPlayer <> Board.Location(X, Y).Side And Board.Location(X, Y).Value = 1 Then
             Return True
         End If
         Return False

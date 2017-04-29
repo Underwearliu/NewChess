@@ -41,6 +41,7 @@
 
         Select Case Value
             Case 1 'General
+                Dim y As Byte = 0
 
                 'Horizontal Movements
                 If ChessX = 3 Or ChessX = 4 Then
@@ -76,9 +77,19 @@
                         End If
                     End If
 
+                    Do
+                        y += 1
+                    Loop Until ChessY + y = 9 Or Board.Location(ChessX, ChessY + y).PicBox.Visible = True
+
+                    If Board.Location(ChessX, ChessY + y).PicBox.Visible = True And Board.Location(ChessX, ChessY + y).Value = 1 Then
+                        PossCounter += 1
+                        XPoss(PossCounter) = ChessX
+                        YPoss(PossCounter) = ChessY + y
+                    End If
+
                 Else
 
-                    If ChessY = 7 Or ChessY = 8 Then
+                        If ChessY = 7 Or ChessY = 8 Then
                         If IsOwnChessThere(ChessSide, ChessX, ChessY + 1) = False Then
                             PossCounter += 1
                             XPoss(PossCounter) = ChessX
@@ -93,7 +104,19 @@
                         End If
                     End If
 
+                    Do
+                        y += 1
+                    Loop Until ChessY - y = 0 Or Board.Location(ChessX, ChessY - y).PicBox.Visible = True
+
+                    If Board.Location(ChessX, ChessY - y).PicBox.Visible = True And Board.Location(ChessX, ChessY - y).Value = 1 Then
+                        PossCounter += 1
+                        XPoss(PossCounter) = ChessX
+                        YPoss(PossCounter) = ChessY - y
+                    End If
+
                 End If
+
+
 
             Case 2 'Soldier
                 If ChessSide = True Then
