@@ -69,7 +69,7 @@
     End Sub
 
 
-    Private Sub SetupPossible() 'Set up possible boxes (bulls eye) which displays after a chesspiece is clicked
+    Private Sub SetupPossible() 'Set up possible boxes (target) which displays after a chesspiece is clicked
         Const PossX As Integer = IntervalX - 50
         Const PossY As Integer = IntervalY - 40
         For x = 0 To BoardX

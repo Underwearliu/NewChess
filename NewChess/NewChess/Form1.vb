@@ -83,7 +83,7 @@
     End Sub
 
 
-    Public Function getTotalRound() 'Request user the number of rounds to play
+    Private Function getTotalRound() 'Request user the number of rounds to play
 
         Dim Input As String
         Dim Rounds As Byte
