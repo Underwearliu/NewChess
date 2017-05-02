@@ -24,8 +24,8 @@
             Form1.StatusLabel.Text = ("There are " & PossCounter & " possible moves.")
         End If
 
-        For a = 0 To PossCounter
-            MakePossVisible(XPoss(a), YPoss(a))
+        For a = 0 To PossCounter 'Objective 14
+            MakePossVisible(XPoss(a), YPoss(a)) 'Objective 9, 14
         Next
 
     End Sub
@@ -38,6 +38,8 @@
         YPoss(PossCounter) = ChessY
 
         'Bunch of Checks
+
+        'Objective 11, 12, 13
 
         Select Case Value
             Case 1 'General
@@ -77,6 +79,7 @@
                         End If
                     End If
 
+                    'Special Mechanic of general (Test 10) 'Objective 17
                     Do
                         y += 1
                     Loop Until ChessY + y = 9 Or Board.Location(ChessX, ChessY + y).PicBox.Visible = True
@@ -104,6 +107,7 @@
                         End If
                     End If
 
+                    'Special Mechanic of general (Test 10) 'Objective 17
                     Do
                         y += 1
                     Loop Until ChessY - y = 0 Or Board.Location(ChessX, ChessY - y).PicBox.Visible = True

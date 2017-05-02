@@ -1,8 +1,8 @@
 ﻿Public Class Form1
-
+    'Objective 1
 
     Private NewGame As Game
-    Private Player1 As PlayerDetails
+    Private Player1 As PlayerDetails 'Objective 2
     Private Player2 As PlayerDetails
     Private CurrentPlayer As Boolean = False 'Red Side always start first
     Private Round As Byte = 0
@@ -19,7 +19,7 @@
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        'Name input
+        'Name input 'Objective 3
         Player1.Name = InputBox("Please enter the name of Player 1 (Starting First)", "Player 1 Name", "Player 1")
         Player2.Name = InputBox("Please enter the name of Player 2 (Starting Second)", "Player 2 Name", "Player 2")
 
@@ -31,14 +31,14 @@
             Player2.Name = "Player 2"
         End If
 
-        'Input Number of rounds
+        'Input Number of rounds 'Objective 4
         TotalRounds = getTotalRound()
 
         'Set score of both player to 0
         Player1.Score = 0
         Player2.Score = 0
 
-        'Display players' name
+        'Display players' name 'Objective 5
         Player1Name.Text = Player1.Name
         Player2Name.Text = Player2.Name
 
@@ -48,7 +48,7 @@
         'Start timer
         ChessTimer.Enabled = True
 
-        'Start a new game
+        'Start a new game 'Objective 7
         NewGame = New Game
 
     End Sub
@@ -56,7 +56,7 @@
 
     Private Sub ChessTimer_Tick(sender As Object, e As EventArgs) Handles ChessTimer.Tick
 
-        'Display players' score
+        'Display players' score 'Objective 6
         Player1Score.Text = Player1.Score
         Player2Score.Text = Player2.Score
 
@@ -125,14 +125,14 @@
             ChessTimer.Enabled = False
 
 
-            If Round = TotalRounds And TotalRounds <> 255 Then
+            If Round = TotalRounds And TotalRounds <> 255 Then 'Objective 24
 
                 DisplayEndingMessage()
 
             Else
 
                 Do
-                    Answer = InputBox("Do you wish to start the next round? (Yes/No) (No = Quit)", "New Game", "Yes")
+                    Answer = InputBox("Do you wish to start the next round? (Yes/No) (No = Quit)", "New Game", "Yes") 'Objective 18
                     If Answer = "Yes" Or Answer = "yes" Then
                         'Great
                     ElseIf Answer = "No" Or Answer = "no" Then
@@ -146,10 +146,10 @@
 
             If Round <> TotalRounds And Answer = "Yes" Or Answer = "yes" Then
                 ChangeGameState()
-                ClearsBoard()
-                NewGame = New Game
-                CurrentPlayer = False
-                StartNewRound()
+                ClearsBoard() 'Objective 19
+                NewGame = New Game 'Objective 7
+                CurrentPlayer = False 'Objective 21
+                StartNewRound() 'Objective 20
                 ChessTimer.Enabled = True
             End If
 
@@ -160,18 +160,20 @@
 
 
     Private Sub DisplayEndingMessage() 'If game is ending then display message as shown as below
-        If Player1.Score > Player2.Score Then
+        If Player1.Score > Player2.Score Then 'Objective 23
             MsgBox("Congratulations to " & Player1.Name & " who beat " & Player2.Name & " " & Player1.Score & " to " & Player2.Score & "!")
         ElseIf Player1.Score < Player2.Score Then
             MsgBox("Congratulations to " & Player2.Name & " who beat " & Player1.Name & " " & Player2.Score & " to " & Player1.Score & "!")
         Else
             MsgBox("Phew! It was a draw between " & Player1.Name & " and " & Player2.Name & " with a score of " & Player1.Score & " to " & Player2.Score & "!")
         End If
-        End
+
+        End 'Objective 22
+
     End Sub
 
 
-    Private Sub ClearsBoard() 'Wipes board for new round
+    Private Sub ClearsBoard() 'Wipes board for new round 'Objective 19
 
         For a = 0 To Board.BoardX
             For b = 0 To Board.BoardY
@@ -183,7 +185,7 @@
     End Sub
 
 
-    Private Sub StartNewRound() 'Add 1 to counter for new round
+    Private Sub StartNewRound() 'Add 1 to counter for new round 'Objective 20
         Round += 1
         If Round Mod 2 = 1 Then
             Player1.CurrentSide = False

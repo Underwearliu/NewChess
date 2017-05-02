@@ -45,7 +45,7 @@
 
     Private Sub ChessReplacement(ByVal X1 As Byte, Y1 As Byte, X2 As Byte, Y2 As Byte)
 
-        'Replaces chess pieces 
+        'Replaces chess pieces 'Objective 25
         Board.Location(X2, Y2).Occupied = True
         Board.Location(X2, Y2).Side = Board.Location(X1, Y1).Side
         Board.Location(X2, Y2).Value = Board.Location(X1, Y1).Value
@@ -54,21 +54,21 @@
 
         'Compare Original Location and PossBox Location to see whether player moved a chesspiece or not
         If X1 <> X2 Or Y1 <> Y2 Then
-            Form1.PlayerChange() 'Change players
+            Form1.PlayerChange() 'Change players 'Objective 16
             Board.Location(X1, Y1).Occupied = False
-            Board.Location(X1, Y1).PicBox.Visible = False
+            Board.Location(X1, Y1).PicBox.Visible = False 'Objective 27
         End If
 
     End Sub
 
 
-    Private Sub MakePossInvisible(ByVal PossX As Byte, ByVal PossY As Byte)
+    Private Sub MakePossInvisible(ByVal PossX As Byte, ByVal PossY As Byte) 'Objective 27
         Board.PossBox(PossX, PossY).Visible = False
     End Sub
 
 
     Private Function CheckWin(ByVal X As Byte, Y As Byte)
-        'Check if the chess piece being replaced is a General
+        'Check if the chess piece being replaced is a General 'Objective 26
         If Form1.getCurrentPlayer <> Board.Location(X, Y).Side And Board.Location(X, Y).Value = 1 Then
             Return True
         End If

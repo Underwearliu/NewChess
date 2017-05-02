@@ -13,7 +13,7 @@
     Private ChessSelect As SelectChess
 
 
-    Public Structure LocationDetails
+    Public Structure LocationDetails 'Objective 8
         Dim Occupied As Boolean
         Dim Side As Boolean
         Dim Value As Byte
@@ -21,8 +21,8 @@
     End Structure
 
 
-    Public Shared Location(BoardX, BoardY) As LocationDetails
-    Public Shared PossBox(BoardX, BoardY) As PictureBox
+    Public Shared Location(BoardX, BoardY) As LocationDetails 'Objective 10
+    Public Shared PossBox(BoardX, BoardY) As PictureBox 'Objective 9
 
 
     Public Sub New()
@@ -49,7 +49,7 @@
 
     Private Sub picBox_Click(sender As Object, e As EventArgs)
 
-        'When a picbox is clicked, a chess will be selected
+        'When a picbox is clicked, a chess will be selected 'Objective 14
         Dim PointX As Integer
         Dim PointY As Integer
         Dim X As Byte = 0
